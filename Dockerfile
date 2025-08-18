@@ -13,8 +13,9 @@ RUN set -ex ;\
     apt update ;\
     apt upgrade -y ;\
     DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
-        curl ca-certificates tzdata build-essential gcc-multilib file \
-        flex bison texinfo libc6-dev-i386 debootstrap qemu-user-static \
+        curl ca-certificates tzdata build-essential gcc-multilib \
+        file flex bison texinfo libc6-dev-i386 \
+        debootstrap qemu-user-static binfmt-support \
     ;\
     cd /tmp ;\
     curl -fL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz -o gcc.tar.xz ;\
