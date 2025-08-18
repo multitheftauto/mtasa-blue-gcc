@@ -45,7 +45,9 @@ RUN set -ex ;\
     update-alternatives --install /usr/bin/g++ g++ /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-g++ 100
 
 RUN set -ex ;\
-    debootstrap --arch=arm64 --variant=minbase --no-check-gpg noble /opt/arm64-sysroot ;\
+    debootstrap --arch arm64 --variant minbase --no-check-gpg --foreign noble /opt/arm64-sysroot ;\
+    cp "$(which qemu-aarch64-static)" /opt/arm64-sysroot/usr/bin ;\
+    chroot /opt/arm64-sysroot /debootstrap/debootstrap --second-stage ;\
     chroot /opt/arm64-sysroot /bin/bash -c "apt update && apt install -y --no-install-recommends libc6-dev" ;\
     mkdir -p /usr/src/binutils/build ;\
     tar -xf /tmp/binutils.tar.xz -C /usr/src/binutils --strip-components=1 ;\
@@ -85,7 +87,9 @@ RUN set -ex ;\
     make install-strip
 
 RUN set -ex ;\
-    debootstrap --arch=armhf --variant=minbase --no-check-gpg noble /opt/armhf-sysroot ;\
+    debootstrap --arch armhf --variant minbase --no-check-gpg --foreign noble /opt/armhf-sysroot ;\
+    cp "$(which qemu-armhf-static)" /opt/armhf-sysroot/usr/bin ;\
+    chroot /opt/armhf-sysroot /debootstrap/debootstrap --second-stage ;\
     chroot /opt/armhf-sysroot /bin/bash -c "apt update && apt install -y --no-install-recommends libc6-dev" ;\
     rm -rf /usr/src/binutils ;\
     mkdir -p /usr/src/binutils/build ;\
