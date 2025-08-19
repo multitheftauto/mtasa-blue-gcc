@@ -14,9 +14,9 @@ COPY ubuntu.sources  /etc/apt/sources.list.d/ubuntu.sources
 RUN set -ex ;\
     dpkg --add-architecture armhf ;\
     dpkg --add-architecture arm64 ;\
-    apt update ;\
-    apt upgrade -y ;\
-    DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
+    apt-get update ;\
+    apt-get upgrade -y ;\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         curl ca-certificates tzdata build-essential gcc-multilib \
         file flex bison texinfo libc6-dev-i386 \
     ;\
