@@ -18,10 +18,18 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ github.token }}
+    - uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: ${{ runner.os }}-buildx-
     - uses: docker/build-push-action@v6
       with:
         push: true
         tags: ghcr.io/multitheftauto/mtasa-blue-gcc:latest
-        provenance: mode=max
-        cache-from: type=gha
-        cache-to: type=gha, mode=max
+        cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
+        cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max
+    - name: Move cache
+      run: |
+        rm -rf ${{ runner.temp }}/.buildx-cache
+        mv ${{ runner.temp }}/.buildx-cache-new ${{ runner.temp }}/.buildx-cache
