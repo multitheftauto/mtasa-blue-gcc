@@ -26,28 +26,28 @@ RUN set -ex ;\
     curl -fL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz -o gcc.tar.xz ;\
     curl -fL https://ftpmirror.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.xz -o binutils.tar.xz
 
-# RUN set -ex ;\
-#     mkdir -p /usr/src/gcc/build ;\
-#     tar -xf /tmp/gcc.tar.xz -C /usr/src/gcc --strip-components=1 ;\
-#     cd /usr/src/gcc ;\
-#     ./contrib/download_prerequisites ;\
-#     cd build ;\
-#     ../configure \
-#         --build=x86_64-linux-gnu \
-#         --prefix=/opt/x86_64-linux-gnu \
-#         --with-glibc-version=$GBLIC_VERSION \
-#         --enable-multilib \
-#         --enable-languages=c,c++ \
-#         --with-gcc-major-version-only \
-#         --disable-nls \
-#         --disable-bootstrap \
-#         --enable-default-pie \
-#         --enable-default-ssp \
-#     ;\
-#     make -j$(nproc) ;\
-#     make install-strip ;\
-#     update-alternatives --install /usr/bin/gcc gcc /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc 100 ;\
-#     update-alternatives --install /usr/bin/g++ g++ /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-g++ 100
+RUN set -ex ;\
+    mkdir -p /usr/src/gcc/build ;\
+    tar -xf /tmp/gcc.tar.xz -C /usr/src/gcc --strip-components=1 ;\
+    cd /usr/src/gcc ;\
+    ./contrib/download_prerequisites ;\
+    cd build ;\
+    ../configure \
+        --build=x86_64-linux-gnu \
+        --prefix=/opt/x86_64-linux-gnu \
+        --with-glibc-version=$GBLIC_VERSION \
+        --enable-multilib \
+        --enable-languages=c,c++ \
+        --with-gcc-major-version-only \
+        --disable-nls \
+        --disable-bootstrap \
+        --enable-default-pie \
+        --enable-default-ssp \
+    ;\
+    make -j$(nproc) ;\
+    make install-strip ;\
+    update-alternatives --install /usr/bin/gcc gcc /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc 100 ;\
+    update-alternatives --install /usr/bin/g++ g++ /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-g++ 100
 
 RUN set -ex ;\
     mkdir -p /opt/arm64-sysroot ;\
