@@ -37,11 +37,11 @@ RUN set -ex ;\
 #   --program-prefix           ~ to avoid this: 'x86_64-linux-gnu-x86_64-linux-gnu-g++-15' 
 #   --enable-offload-targets   ~ not supported
 #   --enable-offload-defaulted ~ not supported
+#   --with-build-config        ~ not supported
 # modified:
 #   --enable-languages         ~ only c and c++
 #   --with-multilib-list       ~ removed mx32
 #   --enable-nls               ~ disabled because we only want English output diagnostics
-#   --with-build-config        ~ LTO is not supported
 # tips:
 #   ~ disable --enable-checking and --enable-libphobos-checking for test builds
 #
@@ -92,7 +92,6 @@ RUN set -ex ;\
         --host=x86_64-linux-gnu \
         --target=x86_64-linux-gnu \
         --enable-link-serialization=2 \
-        --with-build-config=bootstrap-lean \
         --enable-checking=release \
         --enable-libphobos-checking=release \
     ;\
@@ -128,10 +127,10 @@ RUN set -ex ;\
 # removed:
 #   --with-pkgversion    ~ we dont package this
 #   --with-bugurl        ~ not an official distribution
+#   --with-build-config  ~ not supported
 # modified:
 #   --enable-languages   ~ only c and c++
 #   --enable-nls         ~ disabled because we only want English output diagnostics
-#   --with-build-config  ~ LTO is not supported
 # tips:
 #   ~ disable --enable-checking and --enable-libphobos-checking for test builds
 #
@@ -179,7 +178,6 @@ RUN set -ex ;\
         --program-prefix=aarch64-linux-gnu- \
         --includedir=/usr/aarch64-linux-gnu/include \
         --enable-link-serialization=2 \
-        --with-build-config=bootstrap-lean \
         --enable-checking=release \
         --enable-libphobos-checking=release \
     ;\
@@ -196,10 +194,10 @@ RUN set -ex ;\
 # removed:
 #   --with-pkgversion    ~ we dont package this
 #   --with-bugurl        ~ not an official distribution
+#   --with-build-config  ~ not supported
 # modified:
 #   --enable-languages   ~ only c and c++
 #   --enable-nls         ~ disabled because we only want English output diagnostics
-#   --with-build-config  ~ LTO is not supported
 # tips:
 #   ~ disable --enable-checking and --enable-libphobos-checking for test builds
 #
@@ -251,7 +249,6 @@ RUN set -ex ;\
         --program-prefix=arm-linux-gnueabihf- \
         --includedir=/usr/arm-linux-gnueabihf/include \
         --enable-link-serialization=2 \
-        --with-build-config=bootstrap-lean \
         --enable-checking=release \
         --enable-libphobos-checking=release \
     ;\
