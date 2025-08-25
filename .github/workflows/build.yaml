@@ -26,10 +26,10 @@ jobs:
     - uses: docker/build-push-action@v6
       with:
         push: true
-        tags:
-          - 'ghcr.io/multitheftauto/mtasa-blue-gcc:latest'
-          - 'ghcr.io/multitheftauto/mtasa-blue-gcc:noble'
-          - 'ghcr.io/multitheftauto/mtasa-blue-gcc:15-noble'
+        tags: |
+          ghcr.io/multitheftauto/mtasa-blue-gcc:latest
+          ghcr.io/multitheftauto/mtasa-blue-gcc:noble
+          ghcr.io/multitheftauto/mtasa-blue-gcc:15-noble
         cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
         cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max
     - name: Move cache
