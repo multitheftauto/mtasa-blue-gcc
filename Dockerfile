@@ -51,7 +51,7 @@ RUN set -ex ;\
     tar -xf /tmp/gcc.tar.xz -C /src --strip-components=1 ;\
     echo $GCC_VERSION > /src/gcc/BASE-VER ;\
     \
-    rm -rf /tmp/gcc-build/amd64 ;\
+    rm -rf /tmp/gcc-build ;\
     mkdir -p /tmp/gcc-build/amd64 ;\
     cd /tmp/gcc-build/amd64 ;\
     /src/configure \
@@ -98,7 +98,8 @@ RUN set -ex ;\
     ;\
     make -j$(nproc) ;\
     make install-strip DESTDIR=/opt/gcc/x86_64-linux-gnu ;\
-    rm /opt/gcc/x86_64-linux-gnu/usr/bin/*-tmp
+    rm /opt/gcc/x86_64-linux-gnu/usr/bin/*-tmp ;\
+    rm -rf /tmp/gcc-build
 
 RUN set -ex ;\
     cp -r /opt/gcc/x86_64-linux-gnu/usr / ;\
@@ -140,7 +141,7 @@ RUN set -ex ;\
     tar -xf /tmp/gcc.tar.xz -C /src --strip-components=1 ;\
     echo $GCC_VERSION > /src/gcc/BASE-VER ;\
     \
-    rm -rf /tmp/gcc-build/arm64 ;\
+    rm -rf /tmp/gcc-build ;\
     mkdir -p /tmp/gcc-build/arm64 ;\
     cd /tmp/gcc-build/arm64 ;\
     /src/configure \
@@ -183,7 +184,8 @@ RUN set -ex ;\
         --enable-libphobos-checking=release \
     ;\
     make -j$(nproc) ;\
-    make install-strip DESTDIR=/opt/gcc/aarch64-linux-gnu
+    make install-strip DESTDIR=/opt/gcc/aarch64-linux-gnu ;\
+    rm -rf /tmp/gcc-build
 
 # Command line arguments obtained from ubuntu:questing
 #   $ apt-get install -y g++-arm-linux-gnueabihf
@@ -207,7 +209,7 @@ RUN set -ex ;\
     tar -xf /tmp/gcc.tar.xz -C /src --strip-components=1 ;\
     echo $GCC_VERSION > /src/gcc/BASE-VER ;\
     \
-    rm -rf /tmp/gcc-build/armhf ;\
+    rm -rf /tmp/gcc-build ;\
     mkdir -p /tmp/gcc-build/armhf ;\
     cd /tmp/gcc-build/armhf ;\
     /src/configure \
@@ -254,7 +256,8 @@ RUN set -ex ;\
         --enable-libphobos-checking=release \
     ;\
     make -j$(nproc) ;\
-    make install-strip DESTDIR=/opt/gcc/arm-linux-gnueabihf
+    make install-strip DESTDIR=/opt/gcc/arm-linux-gnueabihf ;\
+    rm -rf /tmp/gcc-build
 
 ################################################################################
 # Output
