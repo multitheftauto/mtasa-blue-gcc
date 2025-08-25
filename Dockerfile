@@ -111,7 +111,6 @@ RUN set -ex ;\
     update-alternatives --install /usr/bin/lto-dump                    lto-dump                    /usr/bin/lto-dump-15                    100 ;\
     update-alternatives --install /usr/bin/gcc                         gcc                         /usr/bin/x86_64-linux-gnu-gcc-15        100 ;\
     update-alternatives --install /usr/bin/g++                         g++                         /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
-    update-alternatives --install /usr/bin/g++                         g++                         /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
     update-alternatives --install /usr/bin/x86_64-linux-gnu-g++        x86_64-linux-gnu-g++        /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
     update-alternatives --install /usr/bin/x86_64-linux-gnu-gcc        x86_64-linux-gnu-gcc        /usr/bin/x86_64-linux-gnu-gcc-15        100 ;\
     update-alternatives --install /usr/bin/x86_64-linux-gnu-gcc-ar     x86_64-linux-gnu-gcc-ar     /usr/bin/x86_64-linux-gnu-gcc-ar-15     100 ;\
@@ -286,7 +285,6 @@ RUN set -ex ;\
     update-alternatives --install /usr/bin/gcov-tool                   gcov-tool                   /usr/bin/gcov-tool-15                   100 ;\
     update-alternatives --install /usr/bin/lto-dump                    lto-dump                    /usr/bin/lto-dump-15                    100 ;\
     update-alternatives --install /usr/bin/gcc                         gcc                         /usr/bin/x86_64-linux-gnu-gcc-15        100 ;\
-    update-alternatives --install /usr/bin/g++                         g++                         /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
     update-alternatives --install /usr/bin/g++                         g++                         /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
     update-alternatives --install /usr/bin/x86_64-linux-gnu-g++        x86_64-linux-gnu-g++        /usr/bin/x86_64-linux-gnu-g++-15        100 ;\
     update-alternatives --install /usr/bin/x86_64-linux-gnu-gcc        x86_64-linux-gnu-gcc        /usr/bin/x86_64-linux-gnu-gcc-15        100 ;\
